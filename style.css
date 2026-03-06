@@ -1,0 +1,136 @@
+/* Art direction: Japan April Travel Guide → Warm, refined, editorial
+   Palette: Warm — soft cherry blossom pink accent (#C4678D), cream backgrounds (#FAF8F5), deep indigo text (#1A1B3B)
+   Typography: Cormorant Garamond (display) + DM Sans (body) — elegant Japanese-inspired editorial feel
+   Density: Spacious — editorial travel magazine */
+
+:root {
+  /* Type Scale */
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+  --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Font Families */
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Content widths */
+  --content-narrow: 640px;
+  --content-default: 960px;
+  --content-wide: 1200px;
+  --content-full: 100%;
+}
+
+/* LIGHT MODE — Japan Spring */
+:root, [data-theme="light"] {
+  /* Surfaces */
+  --color-bg:               #FAF8F5;
+  --color-surface:          #FFFFFF;
+  --color-surface-2:        #F5F2EE;
+  --color-surface-offset:   #F0EDE8;
+  --color-surface-offset-2: #EAE6E0;
+  --color-surface-dynamic:  #E3DFD8;
+  --color-divider:          #DDD8D0;
+  --color-border:           #D0CAC0;
+
+  /* Text */
+  --color-text:           #1A1B3B;
+  --color-text-muted:     #5C5D7A;
+  --color-text-faint:     #9D9EB5;
+  --color-text-inverse:   #FAF8F5;
+
+  /* Primary Accent — Sakura Pink */
+  --color-primary:          #C4678D;
+  --color-primary-hover:    #A8506F;
+  --color-primary-active:   #8C3D5A;
+  --color-primary-highlight: #F5E0E8;
+
+  /* Shadows (warm-tinted) */
+  --shadow-sm: 0 1px 2px oklch(0.2 0.02 50 / 0.06);
+  --shadow-md: 0 4px 12px oklch(0.2 0.02 50 / 0.08);
+  --shadow-lg: 0 12px 32px oklch(0.2 0.02 50 / 0.12);
+}
+
+/* DARK MODE — Japan Night */
+[data-theme="dark"] {
+  /* Surfaces */
+  --color-bg:               #12121F;
+  --color-surface:          #1A1A2E;
+  --color-surface-2:        #22223A;
+  --color-surface-offset:   #1E1E32;
+  --color-surface-offset-2: #262644;
+  --color-surface-dynamic:  #2E2E4A;
+  --color-divider:          #2E2E48;
+  --color-border:           #3A3A58;
+
+  /* Text */
+  --color-text:           #E8E6F0;
+  --color-text-muted:     #9A98B0;
+  --color-text-faint:     #6A6880;
+  --color-text-inverse:   #1A1B3B;
+
+  /* Primary Accent — Sakura Pink (lighter for dark bg) */
+  --color-primary:          #E08AAE;
+  --color-primary-hover:    #C4678D;
+  --color-primary-active:   #A8506F;
+  --color-primary-highlight: #2E2236;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.25);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.35);
+  --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45);
+}
+
+/* System preference fallback */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg:               #12121F;
+    --color-surface:          #1A1A2E;
+    --color-surface-2:        #22223A;
+    --color-surface-offset:   #1E1E32;
+    --color-surface-offset-2: #262644;
+    --color-surface-dynamic:  #2E2E4A;
+    --color-divider:          #2E2E48;
+    --color-border:           #3A3A58;
+    --color-text:           #E8E6F0;
+    --color-text-muted:     #9A98B0;
+    --color-text-faint:     #6A6880;
+    --color-text-inverse:   #1A1B3B;
+    --color-primary:          #E08AAE;
+    --color-primary-hover:    #C4678D;
+    --color-primary-active:   #A8506F;
+    --color-primary-highlight: #2E2236;
+    --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.25);
+    --shadow-md: 0 4px 12px oklch(0 0 0 / 0.35);
+    --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45);
+  }
+}

@@ -1,0 +1,616 @@
+/* page.css — Japan in April travel guide layout & components */
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: oklch(from var(--color-bg) l c h / 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.06);
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.site-header.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+.header-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+.logo svg {
+  display: block;
+}
+.logo-text {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Navigation */
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.nav-list {
+  display: flex;
+  gap: var(--space-1);
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nav-list a {
+  display: block;
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+.nav-list a:hover {
+  color: var(--color-text);
+  background: var(--color-surface-offset);
+}
+.nav-list a:active {
+  background: var(--color-surface-dynamic);
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: none;
+  padding: var(--space-2);
+  color: var(--color-text);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  padding: var(--space-2);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  color: var(--color-text);
+  background: var(--color-surface-offset);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  padding: clamp(var(--space-16), 12vw, var(--space-32)) var(--space-4);
+  text-align: center;
+  overflow: hidden;
+}
+.hero-sakura {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.sakura-svg {
+  position: absolute;
+}
+.sakura-1 {
+  width: 120px;
+  top: 10%;
+  right: 8%;
+  opacity: 0.6;
+  animation: sakura-drift-1 20s ease-in-out infinite;
+}
+.sakura-2 {
+  width: 80px;
+  top: 20%;
+  left: 5%;
+  opacity: 0.5;
+  animation: sakura-drift-2 25s ease-in-out infinite;
+}
+.sakura-3 {
+  width: 100px;
+  bottom: 15%;
+  right: 15%;
+  opacity: 0.4;
+  animation: sakura-drift-3 22s ease-in-out infinite;
+}
+
+@keyframes sakura-drift-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-15px, 10px) rotate(8deg); }
+}
+@keyframes sakura-drift-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10px, -8px) rotate(-5deg); }
+}
+@keyframes sakura-drift-3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-8px, -12px) rotate(6deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 56ch;
+  margin: 0 auto;
+}
+
+/* ============================================
+   STATS BAR
+   ============================================ */
+.stats-bar {
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  border-top: 1px solid oklch(from var(--color-text) l c h / 0.06);
+  border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.06);
+}
+.stats-inner {
+  max-width: var(--content-default);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-8);
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--color-divider);
+}
+
+/* ============================================
+   FILTER SECTION
+   ============================================ */
+.filter-section {
+  padding: var(--space-8) var(--space-4);
+  background: var(--color-bg);
+  position: sticky;
+  top: 54px; /* header height */
+  z-index: 50;
+  border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.06);
+}
+.filter-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+}
+.filter-title {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.filter-pill:hover {
+  color: var(--color-text);
+  border-color: oklch(from var(--color-text) l c h / 0.15);
+  background: var(--color-surface-offset);
+}
+.filter-pill:active {
+  background: var(--color-surface-dynamic);
+}
+.filter-pill.active {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+.filter-pill.active .pill-dot {
+  background: var(--color-text-inverse) !important;
+}
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   REGIONS
+   ============================================ */
+.regions-container {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+.region-section {
+  padding: clamp(var(--space-10), 6vw, var(--space-16)) 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.region-section:last-child {
+  border-bottom: none;
+}
+.region-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.region-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.region-count {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================
+   PREFECTURE CARDS
+   ============================================ */
+.prefecture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+  gap: var(--space-6);
+}
+.prefecture-card {
+  background: var(--color-surface);
+  border: 1px solid oklch(from var(--color-text) l c h / 0.07);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: box-shadow var(--transition-interactive),
+              border-color var(--transition-interactive);
+}
+.prefecture-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: oklch(from var(--color-text) l c h / 0.12);
+}
+.prefecture-card.hidden {
+  display: none;
+}
+
+.pref-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+.pref-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+.pref-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.pref-details li {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-divider);
+}
+.pref-details li strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ============================================
+   CATEGORY BADGES
+   ============================================ */
+.cat-badge {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: clamp(0.625rem, 0.6rem + 0.2vw, 0.75rem);
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Light mode badge colors */
+.cat-cherry-blossoms { background: #F5B7B1; color: #943158; }
+.cat-nature-outdoors { background: #D5F5E3; color: #1E5038; }
+.cat-history-culture { background: #FFF3CD; color: #6B4F04; }
+.cat-food-drink { background: #FFE0CC; color: #964300; }
+.cat-onsen-relaxation { background: #D6EAF8; color: #14405E; }
+.cat-festivals-events { background: #E8DAEF; color: #542971; }
+.cat-beach-islands { background: #D1F2EB; color: #0A5242; }
+.cat-art-gardens { background: #FADBD8; color: #7A1F19; }
+.cat-spiritual-pilgrimage { background: #F9E79F; color: #655108; }
+.cat-adventure-sports { background: #D5DBDB; color: #3D4647; }
+
+/* Dark mode badge colors — ensure contrast */
+[data-theme="dark"] .cat-cherry-blossoms { background: rgba(196,103,141,0.2); color: #F0A0BF; }
+[data-theme="dark"] .cat-nature-outdoors { background: rgba(45,106,79,0.2); color: #8ED4AD; }
+[data-theme="dark"] .cat-history-culture { background: rgba(133,100,4,0.2); color: #F0D060; }
+[data-theme="dark"] .cat-food-drink { background: rgba(196,90,0,0.2); color: #F0B080; }
+[data-theme="dark"] .cat-onsen-relaxation { background: rgba(26,82,118,0.2); color: #80C0E8; }
+[data-theme="dark"] .cat-festivals-events { background: rgba(108,52,131,0.2); color: #C8A0E0; }
+[data-theme="dark"] .cat-beach-islands { background: rgba(14,102,85,0.2); color: #70D0B8; }
+[data-theme="dark"] .cat-art-gardens { background: rgba(146,43,33,0.2); color: #F0A098; }
+[data-theme="dark"] .cat-spiritual-pilgrimage { background: rgba(125,102,8,0.2); color: #E8D070; }
+[data-theme="dark"] .cat-adventure-sports { background: rgba(81,90,90,0.2); color: #B0B8B8; }
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .cat-cherry-blossoms { background: rgba(196,103,141,0.2); color: #F0A0BF; }
+  :root:not([data-theme]) .cat-nature-outdoors { background: rgba(45,106,79,0.2); color: #8ED4AD; }
+  :root:not([data-theme]) .cat-history-culture { background: rgba(133,100,4,0.2); color: #F0D060; }
+  :root:not([data-theme]) .cat-food-drink { background: rgba(196,90,0,0.2); color: #F0B080; }
+  :root:not([data-theme]) .cat-onsen-relaxation { background: rgba(26,82,118,0.2); color: #80C0E8; }
+  :root:not([data-theme]) .cat-festivals-events { background: rgba(108,52,131,0.2); color: #C8A0E0; }
+  :root:not([data-theme]) .cat-beach-islands { background: rgba(14,102,85,0.2); color: #70D0B8; }
+  :root:not([data-theme]) .cat-art-gardens { background: rgba(146,43,33,0.2); color: #F0A098; }
+  :root:not([data-theme]) .cat-spiritual-pilgrimage { background: rgba(125,102,8,0.2); color: #E8D070; }
+  :root:not([data-theme]) .cat-adventure-sports { background: rgba(81,90,90,0.2); color: #B0B8B8; }
+}
+
+/* ============================================
+   NO RESULTS
+   ============================================ */
+.no-results {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+}
+.no-results-text {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  margin-top: var(--space-16);
+  padding: var(--space-8) var(--space-4);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-divider);
+}
+.footer-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.footer-source,
+.footer-attr {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+.footer-source a,
+.footer-attr a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.footer-source a:hover,
+.footer-attr a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   SCROLL ANIMATION
+   ============================================ */
+.prefecture-card {
+  opacity: 1;
+}
+.prefecture-card.animate-in {
+  animation: card-appear 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.prefecture-card.animate-in:nth-child(2) { animation-delay: 0.05s; }
+.prefecture-card.animate-in:nth-child(3) { animation-delay: 0.1s; }
+.prefecture-card.animate-in:nth-child(4) { animation-delay: 0.1s; }
+.prefecture-card.animate-in:nth-child(5) { animation-delay: 0.15s; }
+.prefecture-card.animate-in:nth-child(6) { animation-delay: 0.15s; }
+.prefecture-card.animate-in:nth-child(7) { animation-delay: 0.2s; }
+.prefecture-card.animate-in:nth-child(8) { animation-delay: 0.2s; }
+.prefecture-card.animate-in:nth-child(9) { animation-delay: 0.25s; }
+
+@keyframes card-appear {
+  from {
+    opacity: 0.7;
+    clip-path: inset(4% 0 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-divider);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-lg);
+    gap: 0;
+  }
+  .nav-list.open {
+    display: flex;
+  }
+  .nav-list a {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .hero {
+    padding: clamp(var(--space-12), 10vw, var(--space-20)) var(--space-4);
+  }
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+  .hero-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .sakura-1 { width: 80px; }
+  .sakura-2 { width: 50px; }
+  .sakura-3 { width: 60px; }
+
+  .stats-inner {
+    gap: var(--space-4);
+  }
+  .stat-number {
+    font-size: var(--text-xl);
+  }
+  .stat-divider {
+    height: 28px;
+  }
+
+  .filter-section {
+    top: 48px;
+    padding: var(--space-4);
+  }
+  .filter-pills {
+    gap: var(--space-1);
+  }
+  .filter-pill {
+    padding: var(--space-1) var(--space-3);
+    font-size: clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
+  }
+
+  .prefecture-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .region-header {
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-bottom: var(--space-6);
+  }
+  .region-title {
+    font-size: var(--text-xl);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .prefecture-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  .prefecture-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sakura-svg {
+    animation: none !important;
+  }
+  .prefecture-card {
+    animation: none !important;
+    opacity: 1;
+  }
+}
